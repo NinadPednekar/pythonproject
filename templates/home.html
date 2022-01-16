@@ -1,0 +1,48 @@
+<htmL>
+<head>
+	<link rel="stylesheet" href="{{ url_for('static',filename='CSS/home3.css')}}">
+</head>
+<body>
+<form action="{{url_for('users')}}" method="POST" enctype="multipart/form-data" autocomplete="off">
+<header>
+  <nav class="navbar">
+	<div class="logo">
+	     <a href="#" target="_blank">Labour &nbsp; Searching &nbsp; System</a>
+	</div>
+
+	<div class="menu">
+	    <ul>
+		<li><a href="home.php" class="active">home</a></li>
+		<li><a href="/search" >search</a></li>
+		<li><a href="edit_profile.php" >edit profile</a></li>
+        <li><a href="review.php" >Review</a></li>
+		<li><a href="feedback.php" >Feedback</a></li>
+		<li><a href="about.php" >about</a></li>
+		<li><a href="{{url_for('logout')}}" >log out</a></li>
+	   </ul>
+	</div>
+
+	<div class="contact_btn">
+	    <a href="contactus.php" >contact us</a>
+	</div>
+  </nav>
+
+  <div class="center-content">
+	<h1> {{ fname }} &nbsp;{{ lname }}</h1>
+	<h2>Profession:&nbsp;{{ profession }}.</h2>
+	<h2>Labour/User:&nbsp;{{ type }}.</h2>
+	<h2>Phone number:&nbsp;{{ pno }}.</h2>
+	<h2>Language known:&nbsp;{{ language }}.</h2>
+	<h2>Adhar Number:&nbsp;{{ adno }}.</h2>
+	<h2>Date of Birth:&nbsp;{{ dob }}.</h2>
+	<h2>City:&nbsp;{{ city }}.</h2>
+	<h2>Pin code:{{ pcode }}.</h2>
+	<h2>Gender:&nbsp;{{ gender }}.</h2>
+  </div>	
+	
+	<center class="pic"><img src="data:image;base64,{{ userdetails }}" alt="image" style=" height: 500px;"></center>
+ 	
+</header>
+</form>
+</body>
+</html>

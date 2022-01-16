@@ -1,0 +1,13 @@
+<html>
+<body>
+{% for row in data %}
+<tr>
+	<td><center><img src="data:image;base64,{{ row[6] }}" alt="image" style=" height: 150px;"></center></td>
+
+ 	<td><h1>{{ row[0] }} &nbsp;{{ row[1] }}</h1><h5>Type:&nbsp;{{ row[2] }} <br>Profession:&nbsp;{{ row[3] }} <br>City:&nbsp;{{ row[4] }}</h5></td>
+
+ 	<td><h3>{{ row[5] }}</h3></td>
+</tr>
+ {% endfor %}
+</body>
+ </html>

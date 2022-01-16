@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ABC</title>
+</head>
+<body>
+<h1>Atharva Gaikwad</h1>
+<form action="{{url_for('test')}}" method="POST" enctype="multipart/form-data">
+<input type="text" name="fname" id="fname" placeholder="Enter your first name"  required>
+<input type="text" name="lname" id="lname" placeholder="Enter your last name"  required>
+<input type="date" id="dob" name="dob" oninput="return dobc()" required>
+          <div class="input-box">
+	    <span class="details">Profession</span>
+	    <select name="profession" id="profession" required>
+	    
+	    <option></option>
+	    <option value="Needy">Needy(Only for Type=User)</option>
+	    <option value="Plumber">Plumber</option>
+            <option value="Fitter">Fitter</option>
+            <option value="Construction Worker">Construction Worker</option>
+	    <option value="Landscaper's Labour">Landscaper's Labour</option>
+            <option value="Wireman">Wireman</option>
+            <option value="Welder">Welder</option>
+	    <option value="Dress making worker">Dress making worker</option>
+	    <option value="Painter">Painter</option> 
+	    <option value="JCB Driver">JCB Driver</option>
+	    <option value="Truck Driver">Truck Driver</option>      
+            </select>
+    	  </div>
+    	  <div class="lan-detail">
+	  <span class="gender-lang">Gender</span>
+	  <div class="category1" >
+          <input type="radio" name="gender" id="male" value="male" required >Male &nbsp;&nbsp;&nbsp;
+          <input type="radio" name="gender" id="female" value="female">Female &nbsp;&nbsp;&nbsp; 
+          <input type="radio" name="gender" id="other" value="other">Other &nbsp;&nbsp;&nbsp;
+        </div>
+	</div>
+	<div class="lan-detail">
+	    <span class="gender-lang">Known Languages:</span>
+            &nbsp;&nbsp;&nbsp;
+	    <div class="category1" >
+            <input type="checkbox" name="ch[]" value="hindi" required >
+            <span id="hindi" >Hindi</span>
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="ch[]" value="marathi">
+            <span id="marathi" >Marathi</span>
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="ch[]" value="english">
+            <span id="english" >English</span>
+            &nbsp;&nbsp;&nbsp;
+	    </div>
+ 	</div>
+ 	<div class="lan-detail">
+          <span class="gender-lang">Profile Pic</span>
+          <input type="file" name="image" id="image" required>
+	</div>
+<input type="submit" name="submit" value="submit">
+</form>
+</body>
+</html>

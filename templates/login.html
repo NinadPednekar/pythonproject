@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/style1.css')}}">   
+</head>
+<body>
+<script>
+function adcheck(){
+	var e= document.getElementById("adno").value;
+	document.getElementById("msg1").innerHTML=e;
+	if( isNaN(e) || e.length<12 || e.length>12){
+	if(isNaN(e)){
+		document.getElementById("msg1").innerHTML="**Only numeric values allowed";
+		return false;
+		}
+	if(e.length<12){
+		document.getElementById("msg1").innerHTML="**Adhar number must be 12 digits";
+		return false;
+		}
+	if(e.length>12){
+		document.getElementById("msg1").innerHTML="**Adhar number must be 12 digits";
+		return false;	
+		}
+	}	
+	else{
+	document.getElementById("msg1").innerHTML="";
+	}
+}
+</script>
+    <div class="login-box">
+    <img src="{{ url_for('static',filename='CSS/avatar.png')}}" class="avatar">
+        <h1>Login Here</h1>
+            <form action="" method="post" autocomplete="off">
+            <p>Username(Adhar Number)</p>
+	    <span id="msg1" style="color:red;"></span>
+            <input type="text" name="adno" value="" id="adno" placeholder="Enter Username" oninput="return adcheck()" required>
+	           <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <input type="submit" name="submit" value="Login">
+            <a href="forget.php">Forget Password </a>  
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <a href="/signup">Sign up</a> 
+            </form>
+        </div>
+    </body>
+</html>

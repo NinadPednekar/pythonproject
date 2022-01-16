@@ -1,0 +1,293 @@
+<html lang="en" dir="ltr">
+  <head>
+    
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/signup.css')}}">
+    
+   </head>
+<body>
+
+<script>
+	function fnamec(){
+	var f= document.getElementById("fname").value;
+	if(f.search(/[0-9]/)!=-1){
+		document.getElementById("msg1").innerHTML="**Only alphabates are allowed";
+	}
+	else if(f.search(/[!\@\#\$\%\^\&\*\?\<\>]/)!=-1){
+		document.getElementById("msg1").innerHTML="**Only alphabates are allowed";
+	}
+	else{
+		document.getElementById("msg1").innerHTML="";
+	}
+	}
+	
+	function lnamec(){
+	var g= document.getElementById("lname").value;
+	if(g.search(/[0-9]/)!=-1){
+		document.getElementById("msg2").innerHTML="**Only alphabates are allowed";
+	}
+	else if(g.search(/[!\@\#\$\%\^\&\*\?\<\>]/)!=-1){
+		document.getElementById("msg2").innerHTML="**Only alphabates are allowed";
+	}
+	else{
+		document.getElementById("msg2").innerHTML="";
+	}
+	}
+	
+	function cityc(){
+	var h= document.getElementById("city").value;
+	if(h.search(/[0-9]/)!=-1){
+		document.getElementById("msg7").innerHTML="**Only alphabates are allowed";
+	}
+	else if(h.search(/[!\@\#\$\%\^\&\*\?\<\>]/)!=-1){
+		document.getElementById("msg7").innerHTML="**Only alphabates are allowed";
+	}
+	else{
+		document.getElementById("msg7").innerHTML="";
+	}
+	}
+
+    	function adcheck(){
+	var e= document.getElementById("adno").value;
+	if( isNaN(e) || e.length<12 || e.length>12){
+	if(isNaN(e)){
+		document.getElementById("msg3").innerHTML="**Only numeric values allowed";
+		return false;
+		document.getElementById("adno").value="";	
+	}
+	if(e.length<12){
+		document.getElementById("msg3").innerHTML="**Adhar number must be 12 digits";
+		return false;
+		document.getElementById("adno").value="";	
+	}
+	if(e.length>12){
+		document.getElementById("msg3").innerHTML="**Adhar number must be 12 digits";
+		return false;	
+		document.getElementById("adno").value="";
+	}
+	}	
+	else{
+	document.getElementById("msg3").innerHTML="";
+	}
+	}
+
+	function pnoc(){
+	var c= document.getElementById("pno").value;
+	if(isNaN(c)){
+		document.getElementById("msg4").innerHTML="**Only numeric values allowed";
+		return false;
+		document.getElementById("pno").value="";	
+	}
+	else if(c.length<10){
+		document.getElementById("msg4").innerHTML="**Mobile number must be 10 digits";
+		return false;
+		document.getElementById("pno").value="";	
+	}
+	else if(c.length>10){
+		document.getElementById("msg4").innerHTML="**Mobile number must be 10 digits";
+		return false;	
+		document.getElementById("pno").value="";
+	}
+	else if((c.charAt(0)!=9) && (c.charAt(0)!=8) && (c.charAt(0)!=7)){
+		document.getElementById("msg4").innerHTML="**Enter a valid phone number";
+		return false;
+		document.getElementById("pno").value="";	
+	}
+	else{
+		document.getElementById("msg4").innerHTML="";
+	}
+	}
+
+	function epswc(){
+	var a= document.getElementById("epsw").value;
+	var b= document.getElementById("cpsw").value;
+	if(a.length<6){
+		document.getElementById("msg5").innerHTML="Password includes at least 6 digits";
+		return false;
+	}
+	else if(a.length>15){
+		document.getElementById("msg5").innerHTML="Password must be less than 15 digits";
+	   	return false;
+	}
+	else if(a.search(/[0-9]/)==-1){
+		document.getElementById("msg5").innerHTML="Atleast one numeric value must be entered";
+	}
+	else if(a.search(/[a-z]/)==-1){
+		document.getElementById("msg5").innerHTML="Atleast one lower alphabate must be entered";
+	}
+	else if(a.search(/[A-Z]/)==-1){
+		document.getElementById("msg5").innerHTML="Atleast one capital alphabate must be entered";
+	}
+	else if(a.search(/[!\@\#\$\%\^\&\*\?\<\>]/)==-1){
+		document.getElementById("msg5").innerHTML="**Atleast one special character must be entered i.e. '!@#$%^&*?<>'";
+	}
+	else{
+		document.getElementById("msg5").innerHTML="";
+	}
+	}
+
+	function cpswc(){
+	var a= document.getElementById("epsw").value;
+	var b= document.getElementById("cpsw").value;
+	if(a!=b){
+		document.getElementById("msg6").innerHTML="New password and confirm password must be same";
+		return false;	
+	}
+	else{
+		document.getElementById("msg6").innerHTML="";
+	}
+	}
+	
+	function pcodec(){
+	var d= document.getElementById("pcode").value;
+       	if(isNaN(d)){
+		document.getElementById("msg8").innerHTML="**Only numeric values allowed";
+		return false;
+		document.getElementById("pcode").value="";	
+	}
+	else if(d.length<6){
+		document.getElementById("msg8").innerHTML="**Pin code must be 6 digits";
+		return false;
+		document.getElementById("pcode").value="";	
+	}
+	else if(d.length>6){
+		document.getElementById("msg8").innerHTML="**Pin code must be 6 digits";
+		return false;	
+		document.getElementById("pcode").value="";
+	}
+	else{
+	document.getElementById("msg8").innerHTML="";
+	}
+	}
+
+	function dobc(){
+	var i= document.getElementById("dob").value;
+	var j= "1950-01-01";
+	if(i<j){
+		document.getElementById("msg9").innerHTML="**Date must be greater than 01-01-1950 ";
+		return false;
+	}
+	else{
+		document.getElementById("msg9").innerHTML="";
+	}
+	}
+  </script>
+
+
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+    	<form action="{{url_for('test')}}" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">First Name</span>
+            <input type="text" name="fname" id="fname" placeholder="Enter your first name" value="" oninput="return fnamec()" required>
+		<span id="msg1" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Last name</span>
+            <input type="text" name="lname" id="lname" placeholder="Enter your last name" value="" oninput="return lnamec()" required>
+		<span id="msg2" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Adhar Number</span>
+            <input type="text" name="adno" id="adno" placeholder="XXXX-XXXX-XXXX" value="" oninput=" return adcheck()" required>
+		<span id="msg3" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" name="pno" id="pno" placeholder="Enter your number" value="" oninput=" return pnoc()" required>
+		<span id="msg4" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="text" name="epsw" id="epsw" placeholder="Enter your password" value="" oninput=" return epswc()" required>
+		<span id="msg5" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="text" name="cpsw" id="cpsw" placeholder="Confirm your password" value="" oninput=" return cpswc()" required>
+		<span id="msg6" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">City</span>
+            <input type="text" name="city" id="city" placeholder="Enter your city" value="" oninput="return cityc()" required>
+	     <span id="msg7" style="color:red;"> </span>
+          </div>
+          <div class="input-box">
+            <span class="details">Pin Code</span>
+            <input type="text" name="pcode" id="pcode" value="" placeholder="Enter your pincode" oninput=" return pcodec()" required>
+	    <span id="msg8" style="color:red;"> </span>
+	  </div>
+	  <div class="input-box">
+            <span class="details">Date of Birth</span>
+	    <input type="date" id="dob" name="dob" oninput="return dobc()" required>
+	    <span id="msg9" style="color:red;"> </span>
+	  </div>
+          <div class="input-box">
+	    <span class="details">Profession</span>
+	    <select name="profession" id="profession" required>
+	    
+	    <option></option>
+	    <option value="Needy">Needy(Only for Type=User)</option>
+	    <option value="Plumber">Plumber</option>
+            <option value="Fitter">Fitter</option>
+            <option value="Construction Worker">Construction Worker</option>
+	    <option value="Landscaper's Labour">Landscaper's Labour</option>
+            <option value="Wireman">Wireman</option>
+            <option value="Welder">Welder</option>
+	    <option value="Dress making worker">Dress making worker</option>
+	    <option value="Painter">Painter</option> 
+	    <option value="JCB Driver">JCB Driver</option>
+	    <option value="Truck Driver">Truck Driver</option>      
+            </select>
+    	  </div> 	  
+     </div>
+        
+     <div class="language-detail">
+	  <div class="lan-detail">
+	    <span class="gender-lang">Known Languages:</span>
+            &nbsp;&nbsp;&nbsp;
+	    <div class="category1" >
+            <input type="checkbox" name="ch[]" value="hindi" required >
+            <span id="hindi" >Hindi</span>
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="ch[]" value="marathi">
+            <span id="marathi" >Marathi</span>
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="ch[]" value="english">
+            <span id="english" >English</span>
+            &nbsp;&nbsp;&nbsp;
+	    </div>
+ 	</div>
+ 	  <div class="lan-detail">
+	  <span class="gender-lang">Gender</span>
+	  <div class="category1" >
+          <input type="radio" name="gender" id="male" value="male" required >Male &nbsp;&nbsp;&nbsp;
+          <input type="radio" name="gender" id="female" value="female">Female &nbsp;&nbsp;&nbsp; 
+          <input type="radio" name="gender" id="other" value="other">Other &nbsp;&nbsp;&nbsp;
+        </div>
+	</div>
+	<div class="lan-detail">
+          <span class="gender-lang">Profile Pic</span>
+          <input type="file" name="image" id="image" required>
+	</div>
+	<div class="lan-detail">
+         <span class="gender-lang">Type</span>
+	 <div class="category1" >   
+         <select name="type" id="type" required>
+	    <option></option>
+	    <option value="labour">Labour</option>
+	    <option value="user">User</option>
+   	 </select>
+	</div>
+        </div>
+      </div>
+        <div class="button">
+          <input type="submit" name="submit" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

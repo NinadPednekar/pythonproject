@@ -1,0 +1,123 @@
+     <style>
+	    h3{
+		 display:none; 
+		}
+            table tr{
+                cursor: pointer;transition: all .25s ease-in-out;
+            }
+            table tr:hover{background-color: #ddd;}
+		.selected{ background-color: #ddd;}
+    </style>
+
+<html>
+<head>
+
+
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='CSS/search3.css')}}"> 
+</head>
+<body>
+
+
+
+
+<header>
+  <nav class="navbar">
+	<div class="logo">
+	     <a href="#" target="_blank">Labour &nbsp; Searching &nbsp; System</a>
+	</div>
+
+	<div class="menu">
+	    <ul>
+		<li><a href="users" >home</a></li>
+		<li><a href="search.php" class="active">search</a></li>
+		<li><a href="edit_profile.php" >edit profile</a></li>
+		<li><a href="review.php" >Review</a></li>
+		<li><a href="feedback.php" >Feedback</a></li>
+		<li><a href="about.php" >about</a></li>
+		<li><a href="{{url_for('logout')}}" >log out</a></li>
+	   </ul>
+	</div>
+
+	<div class="contact_btn">
+	    <a href="contactus.php" >contact us</a>
+	</div>
+  </nav>
+</header>
+
+
+
+
+
+<center>
+	
+	
+	<!-- <a href="filter.php"><h2><b>&nbsp;&nbsp;&nbsp;|Filter|</h2></b></a> -->
+	<table id="table">
+ {% for row in data %}
+ 
+<tr>
+	<td><center><img src="data:image;base64,{{ row[6] }}" alt="image" style=" height: 150px;"></center></td>
+
+ 	<td><h1>{{ row[0] }} &nbsp;{{ row[1] }}</h1><h5>Type:&nbsp;{{ row[2] }} <br>Profession:&nbsp;{{ row[3] }} <br>City:&nbsp;{{ row[4] }}</h5></td>
+
+ 	<td><h3>{{ row[5] }}</h3></td> 
+
+	 <td>
+		<form method = "POST" action = "{{url_for('selectedUser')}}">
+			<div class = "msgform">
+			  <div>
+				  <input type = "hidden" value = {{row[7]}} name = "msgid">
+				  <input class = "userButton" type = "submit" value = "View">
+			  </div>
+			</div>
+			</form>
+	 </td>
+	 
+</tr>
+
+
+ {% endfor %}
+</center>
+</table>
+
+
+<form method = "POST" action = "{{url_for('selectedUser')}}">
+<div class = "msgform">
+  <div>
+	  <input type = "text" placeholder="Select ID" name = "msgid">
+	  <input type = "submit" value = "GO">
+  </div>
+</div>
+</form>
+
+
+	<script>
+
+		var table = document.getElementById("table");
+		
+		for(var i = 0; i < table.rows.length; i++)
+		{
+			table.rows[i].onclick = function()
+			{
+				//rIndex = this.rowIndex;
+
+				document.getElementById("adno1").value = this.cells[2].innerHTML;  
+		
+				if(typeof index!=="undefined"){
+					table.rows[index].classList.toggle("selected");
+				}
+				console.log(typeof index);
+				index=this.rowIndex;
+				this.classList.toggle("selected");
+				console.log(typeof index);
+			};
+		}
+		
+		function viewData(){
+			console.log("hello");
+		}
+	
+	</script>
+</body>
+</html>

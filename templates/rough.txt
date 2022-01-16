@@ -1,0 +1,5 @@
+<td><center><img src="data:image;base64,{{ userdetails }}" alt="image" style=" height: 150px;"></center></td>
+
+ 	<td><h1>{{ fname }} &nbsp;{{ lname }}</h1><h5>Type:&nbsp;{{ type }} <br>Profession:&nbsp;{{ profession }} <br>City:&nbsp;{{ city }}</h5></td>
+
+ 	<td><h3>{{ adno }}</h3></td>
